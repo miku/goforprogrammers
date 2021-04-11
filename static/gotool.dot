@@ -19,6 +19,7 @@ digraph gotool {
     "go" ->   "tool";
     "go" ->   "version";
     "go" ->   "vet";
+    "go" -> "help";
 
     "go" [style="filled" fillcolor="orange"];
     "get" [style="filled" fillcolor="yellow"];
