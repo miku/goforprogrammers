@@ -6,8 +6,8 @@
 
 ## Other Resources
 
-![](../static/go_21_s.jpg)
-![](../static/go_prog_lang_s.jpg)
+![](https://raw.githubusercontent.com/miku/goforprogrammers/master/static/go_21_s.jpg)
+![](https://raw.githubusercontent.com/miku/goforprogrammers/master/static/go_prog_lang_s.jpg)
 
 * [more Go books](https://www.google.com/search?channel=fs&client=ubuntu&q=golang+books)
 
