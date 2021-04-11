@@ -30,6 +30,7 @@ var a int8 = 10.0 // explicit type
 
 ## Types
 
+* boolean, called `bool`, predeclared constants `true` and `false`
 * [https://golang.org/ref/spec#Numeric_types](https://golang.org/ref/spec#Numeric_types)
 
 ```
@@ -56,4 +57,22 @@ rune        alias for int32
 * [proposal: spec: remove complex numbers #19921](https://github.com/golang/go/issues/19921) (Apr 11, 2017)
 
 > Go supports complex numbers, but ~nobody uses them.
+
+* String types, `s := "Hello 世界` - all Go source is UTF-8 encoded
+
+Any UTF-8 character may be used as a variable name
+([play](https://play.golang.org/p/eU4VDR0-jpE)):
+
+```go
+package main
+
+import (
+    "fmt"
+)
+
+func main() {
+    世界  := "hello world"
+    fmt.Println(世界)
+}
+```
 
