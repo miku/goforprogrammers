@@ -11,6 +11,8 @@
 
 * [more Go books](https://www.google.com/search?channel=fs&client=ubuntu&q=golang+books)
 
+![](https://raw.githubusercontent.com/miku/goforprogrammers/master/static/goog_books.png)
+
 ## Execution Model
 
 * Go is a compiled, strongly typed, garbage-collected language. An executable
