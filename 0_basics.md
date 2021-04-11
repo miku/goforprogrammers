@@ -4,6 +4,12 @@
 
 * [ref/spec](https://golang.org/ref/spec)
 
+## Other Resources
+
+![](https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRePI7dT3yw9lAmEtgHWs-DDVnNIMqAEUWApZ-oldsiPwzCtPIX)
+
+* [more Go books](https://www.google.com/search?channel=fs&client=ubuntu&q=golang+books)
+
 ## Execution Model
 
 * Go is a compiled, strongly typed, garbage-collected language. An executable
