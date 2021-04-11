@@ -54,11 +54,14 @@ byte        alias for uint8
 rune        alias for int32
 ```
 
+There are implementation specific predeclared types for `uint` (32 or 64 bits),
+`int` (same as `uint`), `uintptr` large enough to store pointer value
+
 * [proposal: spec: remove complex numbers #19921](https://github.com/golang/go/issues/19921) (Apr 11, 2017)
 
 > Go supports complex numbers, but ~nobody uses them.
 
-* String types, `s := "Hello 世界` - all Go source is UTF-8 encoded
+* String type, `s := "Hello 世界"` - all Go source is UTF-8 encoded, double quotes or backticks for multiline strings; strings are *immutable*
 
 Any UTF-8 character may be used as a variable name
 ([play](https://play.golang.org/p/eU4VDR0-jpE)):
@@ -73,6 +76,26 @@ import (
 func main() {
     世界  := "hello world"
     fmt.Println(世界)
+}
+```
+
+There are [arrays](https://golang.org/ref/spec#Array_types) and
+[slices](https://golang.org/ref/spec#Slice_types) in Go. Arrays carry their
+length as part of the type, slices are dynamically sized arrays. You will
+mostly encounter slices.
+
+Example (on [play](https://play.golang.org/p/bsgboAZ82jH)):
+
+```golang
+package main
+
+import (
+    "fmt"
+)
+
+func main() {
+    data := []int{1, 2, 3, 4, 5}
+    fmt.Printf("%v has length %d", data, len(data))
 }
 ```
 
