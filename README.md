@@ -23,6 +23,10 @@ take a look at Go: We introduce the language, and focus on topics specific to
 Go, like program design, project layout, concurrecy, testing and HTTP
 applications. We will study example code and write small programs ourselves.
 
+Requirements: Laptop (or any computer) with [Go
+installed](https://golang.org/doc/install), some editor and
+[git](https://git-scm.com/).
+
 ----
 
 ## Outline
