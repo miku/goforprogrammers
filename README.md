@@ -2,7 +2,7 @@
 
 * [https://spartakiade.org/](https://spartakiade.org/)
 
-Date and location: 2021-04-23, 09-17 (09-12, 13-15, 15:15-17), remote workshop
+Date and location: 2021-04-23, 09-17 (09-12, 13-15, 15:15-17), remote workshop [TBD]
 
 ## Abstract
 
