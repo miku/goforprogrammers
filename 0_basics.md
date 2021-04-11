@@ -6,8 +6,8 @@
 
 ## Other Resources
 
-![](https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRePI7dT3yw9lAmEtgHWs-DDVnNIMqAEUWApZ-oldsiPwzCtPIX)
-![](https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR16Md-mOZ1ydf32vFWfLUkEM5WvmUwIuOndWCDtWzY8MRTGZfs)
+![](https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRePI7dT3yw9lAmEtgHWs-DDVnNIMqAEUWApZ-oldsiPwzCtPIX | width=100)
+![](https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR16Md-mOZ1ydf32vFWfLUkEM5WvmUwIuOndWCDtWzY8MRTGZfs | width=100)
 
 * [more Go books](https://www.google.com/search?channel=fs&client=ubuntu&q=golang+books)
 
