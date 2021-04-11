@@ -126,5 +126,39 @@ func main() {
             Long: 12.37129,
         }}
     fmt.Println(peer)
+    // {martin {51.33962 12.37129}}
+}
+```
+
+Struct types support embedding (allows for reuse and composition) and tags (a weakly typed, but lightweight approach to annotations).
+
+```golang
+package main
+
+import (
+    "encoding/json"
+    "fmt"
+)
+
+type Location struct {
+    Lat  float64 `json:"lat"`
+    Long float64 `json:"long"`
+}
+
+type Peer struct {
+    Name     string   `json:"name"`
+    Location Location `json:"loc"`
+}
+
+func main() {
+    peer := Peer{
+        Name: "martin",
+        Location: Location{
+            Lat:  51.33962,
+            Long: 12.37129,
+        }}
+    b, _ := json.Marshal(peer)
+    fmt.Println(string(b))
+    // {"name":"martin","loc":{"lat":51.33962,"long":12.37129}}
 }
 ```
