@@ -33,11 +33,11 @@ installed](https://golang.org/doc/install), some editor and
 
 ## Outline
 
-* The Basics
+* Basics
 
 > The basic data types, control structures and program structure.
 
-* The Tools
+* Tools
 
 > Test, build, lint and run Go applications with the Go tool.
 
@@ -61,7 +61,7 @@ services or command line tools.
 communicate between threads of execution. Concurrency is often wrapped inside a
 library and keeps most code sequential.
 
-* Testing Go Applications
+* Testing
 
 > Simple test are table driven. The Go tool supports testing, coverage and benchmarking.
 
