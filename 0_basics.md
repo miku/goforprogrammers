@@ -99,3 +99,32 @@ func main() {
 }
 ```
 
+* Struct types group zero or more fields (name, type) into a type.
+
+Example ([play](https://play.golang.org/p/RYOrTC-CqPu)):
+
+```golang
+package main
+
+import "fmt"
+
+type Location struct {
+    Lat  float64
+    Long float64
+}
+
+type Peer struct {
+    Name     string
+    Location Location
+}
+
+func main() {
+    peer := Peer{
+        Name: "martin",
+        Location: Location{
+            Lat:  51.33962,
+            Long: 12.37129,
+        }}
+    fmt.Println(peer)
+}
+```
