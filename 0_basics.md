@@ -132,6 +132,8 @@ func main() {
 
 Struct types support embedding (allows for reuse and composition) and tags (a weakly typed, but lightweight approach to annotations).
 
+Example ([play](https://play.golang.org/p/KgKB3jqCapV)):
+
 ```golang
 package main
 
