@@ -164,3 +164,32 @@ func main() {
     // {"name":"martin","loc":{"lat":51.33962,"long":12.37129}}
 }
 ```
+
+* Map types are the way to implement hash maps or associative arrays.
+
+Example ([play](https://play.golang.org/p/kMy733hPcFT)):
+
+```golang
+package main
+
+import (
+    "fmt"
+)
+
+func main() {
+    stats := map[string]int{
+        "ok":     120,
+        "failed": 2,
+    }
+    fmt.Println(stats)       // --> map[failed:2 ok:120]
+    stats["ok"]++            // modify entry
+    stats["new"] = 1         // add entry
+    fmt.Println(stats)       // --> map[failed:2 new:1 ok:121]
+    delete(stats, "new")     // delete an entry
+    fmt.Println(stats)       // --> map[failed:2 ok:121]
+    fmt.Println(stats["ok"]) // --> 121
+}
+```
+
+* Functions can be types too, which makes function first class values in Go.
+*
