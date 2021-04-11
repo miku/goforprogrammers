@@ -53,3 +53,7 @@ byte        alias for uint8
 rune        alias for int32
 ```
 
+* [proposal: spec: remove complex numbers #19921](https://github.com/golang/go/issues/19921) (Apr 11, 2017)
+
+> Go supports complex numbers, but ~nobody uses them.
+
