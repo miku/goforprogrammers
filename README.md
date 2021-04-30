@@ -2,7 +2,9 @@
 
 * [https://spartakiade.org/](https://spartakiade.org/)
 
-Date and location: 2021-06-11, 09-17 (09-12, 13-15, 15:15-17), remote workshop
+Date and location: 2021-06-11, 09-17 (09-12, 13-15, 15:15-17), remote workshop;
+language: de/en (depending on participants; slides and material will be in
+English)
 
 ## Abstract
 
@@ -17,6 +19,13 @@ Voraussetzung: Laptop, am besten mit einer [Go
 Installation](https://golang.org/doc/install); Editor und
 [git](https://git-scm.com/) für das Clonen des Repos.
 
+Für wen ist der Workshop?
+
+> Alle, die schon programmieren, aber noch wenig oder gar keine Erfahrung mit
+> Go haben und die Sprache in wenigen Stunden von vielen Seiten beleuchtet
+> sehen möchten: mit echten Code-Beispielen, typischen Mustern und
+> Lösungsansätzen.
+
 ----
 
 Go is a modern programming language, which - a bit like English - is easy to
@@ -28,6 +37,11 @@ applications. We will study example code and write small programs ourselves.
 Requirements: Laptop (or any computer) with [Go
 installed](https://golang.org/doc/install), some editor and
 [git](https://git-scm.com/).
+
+Who is this workshop for?
+
+> Anyone, who already programs and would like to learn more about what makes Go
+> work, from language features to project patterns and real-world examples.
 
 ----
 
