@@ -69,6 +69,8 @@ var a int8 = 10.0 // explicit type
 
 ## Types
 
+### Primitive Types
+
 * boolean, called `bool`, predeclared constants `true` and `false`
 * [https://golang.org/ref/spec#Numeric_types](https://golang.org/ref/spec#Numeric_types)
 
@@ -94,13 +96,13 @@ rune        alias for int32
 ```
 
 There are implementation specific predeclared types for `uint` (32 or 64 bits),
-`int` (same as `uint`), `uintptr` large enough to store pointer value
+`int` (same as `uint`), `uintptr` large enough to store pointer value.
 
 * [proposal: spec: remove complex numbers #19921](https://github.com/golang/go/issues/19921) (Apr 11, 2017)
 
 > Go supports complex numbers, but ~nobody uses them.
 
-* String type, `s := "Hello 世界"` - all Go source is UTF-8 encoded, double quotes or backticks for multiline strings; strings are *immutable*
+* String type, `s := "Hello 世界"` - all Go source is UTF-8 encoded, double quotes or backticks for multiline strings; strings are *immutable*.
 
 Any UTF-8 character may be used as a variable name
 ([play](https://play.golang.org/p/eU4VDR0-jpE)):
@@ -117,6 +119,8 @@ func main() {
     fmt.Println(世界)
 }
 ```
+
+### Arrays and Slices
 
 There are [arrays](https://golang.org/ref/spec#Array_types) and
 [slices](https://golang.org/ref/spec#Slice_types) in Go. Arrays carry their
@@ -137,6 +141,8 @@ func main() {
     fmt.Printf("%v has length %d", data, len(data))
 }
 ```
+
+### Structs
 
 * Struct types group zero or more fields (name, type) into a type.
 
@@ -169,7 +175,8 @@ func main() {
 }
 ```
 
-Struct types support embedding (allows for reuse and composition) and tags (a weakly typed, but lightweight approach to annotations).
+Struct types support embedding (allows for reuse and composition) and tags (a
+weakly typed, but lightweight approach to annotations).
 
 Example ([play](https://play.golang.org/p/KgKB3jqCapV)):
 
@@ -204,6 +211,8 @@ func main() {
 }
 ```
 
+### Maps
+
 * Map types are the way to implement hash maps or associative arrays.
 
 Example ([play](https://play.golang.org/p/kMy733hPcFT)):
@@ -231,4 +240,3 @@ func main() {
 ```
 
 * Functions can be types too, which makes function first class values in Go.
-*
