@@ -89,18 +89,7 @@ mostly encounter slices.
 
 Example (on [play](https://play.golang.org/p/bsgboAZ82jH)):
 
-```golang
-package main
-
-import (
-    "fmt"
-)
-
-func main() {
-    data := []int{1, 2, 3, 4, 5}
-    fmt.Printf("%v has length %d", data, len(data))
-}
-```
+[embedmd]:# (x/slicehello/main.go)
 
 #### Creating a slice
 
