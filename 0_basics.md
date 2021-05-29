@@ -142,6 +142,36 @@ func main() {
 }
 ```
 
+#### Creating a slice
+
+```go
+package main
+
+func main() {
+    var a []string
+    b := []string{}
+    c := []string{"a", "b", "c"}
+}
+```
+
+#### The append builtin function
+
+* [Go Tour: Appending to slice](https://tour.golang.org/moretypes/15), it is a
+  [built-in](https://golang.org/pkg/builtin/#append) function
+
+```go
+package main
+
+func main() {
+    var a []string
+    a = append(a, "x")
+    a = append(a, "y")
+
+    b := []string{"X", "Y"}
+    a = append(a, b...)
+}
+```
+
 ### Structs
 
 * Struct types group zero or more fields (name, type) into a type.
