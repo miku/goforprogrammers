@@ -19,15 +19,7 @@
 
 ## Hello, World
 
-```go
-package main
-
-import "fmt"
-
-func main() {
-    fmt.Println("hello, world")
-}
-```
+[embedmd]:# (x/helloworld/main.go)
 
 ## Execution Model
 
@@ -36,22 +28,18 @@ func main() {
 
 ## Variables
 
-* There are four notations to [declare](https://golang.org/ref/spec#Variable_declarations) and initialize variables.
+* There are four notations to
+  [declare](https://golang.org/ref/spec#Variable_declarations) and initialize
+variables.
 
 You'll mostly the following two (type inference):
 
-```
-a := 1.17
-var b = 1.0
-```
+[embedmd]:# (x/vars/main.go /^.*a := 3.14/ /var b = 1.0.*/)
 
-You can control the type explicitly. The type follows the identifier (as
+You can name the type explicitly. The type follows the identifier (as
 opposed to C, Java, ...):
 
-```
-var a int         // zero value
-var a int8 = 10.0 // explicit type
-```
+[embedmd]:# (x/vars/main.go /^.*c int/ /var d int8 =.*/)
 
 * The default integer type will by [int](https://play.golang.org/p/z1emUwkp1rL).
 * Every type has a [zero value](https://golang.org/ref/spec#The_zero_value)
@@ -74,26 +62,9 @@ var a int8 = 10.0 // explicit type
 * boolean, called `bool`, predeclared constants `true` and `false`
 * [https://golang.org/ref/spec#Numeric_types](https://golang.org/ref/spec#Numeric_types)
 
-```
-uint8       the set of all unsigned  8-bit integers (0 to 255)
-uint16      the set of all unsigned 16-bit integers (0 to 65535)
-uint32      the set of all unsigned 32-bit integers (0 to 4294967295)
-uint64      the set of all unsigned 64-bit integers (0 to 18446744073709551615)
 
-int8        the set of all signed  8-bit integers (-128 to 127)
-int16       the set of all signed 16-bit integers (-32768 to 32767)
-int32       the set of all signed 32-bit integers (-2147483648 to 2147483647)
-int64       the set of all signed 64-bit integers (-9223372036854775808 to 9223372036854775807)
+[embedmd]:# (https://golang.org/ref/spec go /^uint8.*/ /^rune.*/)
 
-float32     the set of all IEEE-754 32-bit floating-point numbers
-float64     the set of all IEEE-754 64-bit floating-point numbers
-
-complex64   the set of all complex numbers with float32 real and imaginary parts
-complex128  the set of all complex numbers with float64 real and imaginary parts
-
-byte        alias for uint8
-rune        alias for int32
-```
 
 There are implementation specific predeclared types for `uint` (32 or 64 bits),
 `int` (same as `uint`), `uintptr` large enough to store pointer value.
@@ -107,18 +78,7 @@ There are implementation specific predeclared types for `uint` (32 or 64 bits),
 Any UTF-8 character may be used as a variable name
 ([play](https://play.golang.org/p/eU4VDR0-jpE)):
 
-```go
-package main
-
-import (
-    "fmt"
-)
-
-func main() {
-    世界  := "hello world"
-    fmt.Println(世界)
-}
-```
+[embedmd]:# (x/hellojp/main.go)
 
 ### Arrays and Slices
 
