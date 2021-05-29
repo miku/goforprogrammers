@@ -269,4 +269,4 @@ func main() {
 }
 ```
 
-* Functions can be types too, which makes function first class values in Go.
+
