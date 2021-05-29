@@ -36,7 +36,7 @@ func main() {
 
 ## Variables
 
-* There are four notations to declare and initialize variables.
+* There are four notations to [declare](https://golang.org/ref/spec#Variable_declarations) and initialize variables.
 
 You'll mostly the following two (type inference):
 
@@ -52,6 +52,20 @@ opposed to C, Java, ...):
 var a int         // zero value
 var a int8 = 10.0 // explicit type
 ```
+
+* The default integer type will by [int](https://play.golang.org/p/z1emUwkp1rL).
+* Every type has a [zero value](https://golang.org/ref/spec#The_zero_value)
+
+> **When storage is allocated for a variable**, either through a declaration or
+> a call of new, or when a new value is created, either through a composite
+> literal or a call of make, **and no explicit initialization is provided, the
+> variable or value is given a default value**. Each element of such a variable
+> or value is set to the **zero value for its type**: false for booleans, 0 for
+> numeric types, "" for strings, and nil for pointers, functions, interfaces,
+> slices, channels, and maps. This initialization is done recursively, so for
+> instance each element of an array of structs will have its fields zeroed if
+> no value is specified.
+
 
 ## Types
 
