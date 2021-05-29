@@ -1,5 +1,9 @@
 # Basics
 
+> Go is an open source programming language that makes it easy to build simple,
+> reliable, and efficient software. --
+> [https://golang.org/](https://golang.org/)
+
 ## Spec
 
 * [ref/spec](https://golang.org/ref/spec)
@@ -12,6 +16,18 @@
 * [more Go books](https://www.google.com/search?channel=fs&client=ubuntu&q=golang+books)
 
 ![](https://raw.githubusercontent.com/miku/goforprogrammers/master/static/goog_books.png)
+
+## Hello, World
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("hello, world")
+}
+```
 
 ## Execution Model
 
