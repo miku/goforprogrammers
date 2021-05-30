@@ -12,6 +12,10 @@ Even if you do not see them typically, Go uses
 
 You can name a variable `αβ` - *first character in an identifier must be a letter*.
 
+> Go treats all characters in any of the Letter categories Lu, Ll, Lt, Lm, or Lo as Unicode letters [...]
+
+* [Unicode 4.5 General Category](https://www.unicode.org/versions/Unicode8.0.0/ch04.pdf#page=17)
+
 
 ## Rune literals
 
@@ -38,3 +42,5 @@ func main() {
 	// int32 ⧉ 10697 29c9 true
 }
 ```
+
+More on that in [https://blog.golang.org/strings](https://blog.golang.org/strings).
