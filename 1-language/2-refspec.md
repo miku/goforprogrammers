@@ -1,5 +1,7 @@
 # Selected notes on ref/spec
 
+A few picks from [ref/spec](https://golang.org/ref/spec).
+
 ## Semicolons
 
 Even if you do not see them typically, Go uses
@@ -8,7 +10,7 @@ Even if you do not see them typically, Go uses
 
 ## Identifiers
 
-You can name a variable `αβ` - *first character in an identifier must be a letter*. 
+You can name a variable `αβ` - *first character in an identifier must be a letter*.
 
 
 ## Rune literals
