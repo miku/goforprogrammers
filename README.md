@@ -47,42 +47,42 @@ Who is this workshop for?
 
 ## Outline
 
-* Basics
+* [Language Overview](1-language)
 
 > The basic data types, control structures and program structure.
 
-* Tools
+* [Tools](2-tools)
 
 > Test, build, lint and run Go applications with the Go tool.
 
-* Program design
+* [Program design](3-program-design)
 
 > An entry point are the data structures, custom interfaces emerge along design
 and development; keeping interfaces small helps composability.
 
-* Project layout
+* [Project layout](4-projects)
 
 > Where does code live, how do you keep track of dependencies, how to structure
 services or command line tools.
 
-* Deployment options
+* [Deployment options](5-deployments)
 
 > What's in the binary and how do you run this thing?
 
-* Concurrency
+* [Concurrency](6-concurrency)
 
 > Go supports classic concurrency primitives, like locks, but also channels to
 communicate between threads of execution. Concurrency is often wrapped inside a
 library and keeps most code sequential.
 
-* Testing
+* [Testing](7-testing)
 
 > Simple test are table driven. The Go tool supports testing, coverage and benchmarking.
 
-* HTTP Applications
+* [HTTP Applications](8-web-apps)
 
 > Building lean web applications with `net/http` and friends.
 
-* Go Projects
+* [Misc](9-misc)
 
-> What are people building with Go.
+> Other topics, like: What are people building with Go.
