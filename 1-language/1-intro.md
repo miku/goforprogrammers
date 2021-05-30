@@ -1,4 +1,4 @@
-# Basics
+# Intro
 
 > Go is an open source programming language that makes it easy to build simple,
 > reliable, and efficient software. --
@@ -19,7 +19,7 @@
 
 ## Hello, World
 
-[embedmd]:# (x/helloworld/main.go)
+[embedmd]:# (../x/helloworld/main.go)
 
 ## Execution Model
 
@@ -34,12 +34,12 @@ variables.
 
 You'll mostly the following two (type inference):
 
-[embedmd]:# (x/vars/main.go /^.*a := 3.14/ /var b = 1.0.*/)
+[embedmd]:# (../x/vars/main.go /^.*a := 3.14/ /var b = 1.0.*/)
 
 You can name the type explicitly. The type follows the identifier (as
 opposed to C, Java, ...):
 
-[embedmd]:# (x/vars/main.go /^.*c int/ /var d int8 =.*/)
+[embedmd]:# (../x/vars/main.go /^.*c int/ /var d int8 =.*/)
 
 * The default integer type will by [int](https://play.golang.org/p/z1emUwkp1rL).
 * Every type has a [zero value](https://golang.org/ref/spec#The_zero_value)
@@ -78,7 +78,7 @@ There are implementation specific predeclared types for `uint` (32 or 64 bits),
 Any UTF-8 character may be used as a variable name
 ([play](https://play.golang.org/p/eU4VDR0-jpE)):
 
-[embedmd]:# (x/hellojp/main.go)
+[embedmd]:# (../x/hellojp/main.go)
 
 ### Arrays and Slices
 
@@ -89,37 +89,18 @@ mostly encounter slices.
 
 Example (on [play](https://play.golang.org/p/bsgboAZ82jH)):
 
-[embedmd]:# (x/slicehello/main.go)
+[embedmd]:# (../x/slicehello/main.go)
 
 #### Creating a slice
 
-```go
-package main
-
-func main() {
-    var a []string
-    b := []string{}
-    c := []string{"a", "b", "c"}
-}
-```
+[embedmd]:# (../x/sliceinit/main.go)
 
 #### The append builtin function
 
 * [Go Tour: Appending to slice](https://tour.golang.org/moretypes/15), it is a
   [built-in](https://golang.org/pkg/builtin/#append) function
 
-```go
-package main
-
-func main() {
-    var a []string
-    a = append(a, "x")
-    a = append(a, "y")
-
-    b := []string{"X", "Y"}
-    a = append(a, b...)
-}
-```
+[embedmd]:# (../x/sliceappend/main.go)
 
 ### Structs
 
@@ -127,68 +108,14 @@ func main() {
 
 Example ([play](https://play.golang.org/p/RYOrTC-CqPu)):
 
-```golang
-package main
-
-import "fmt"
-
-type Location struct {
-    Lat  float64
-    Long float64
-}
-
-type Peer struct {
-    Name     string
-    Location Location
-}
-
-func main() {
-    peer := Peer{
-        Name: "martin",
-        Location: Location{
-            Lat:  51.33962,
-            Long: 12.37129,
-        }}
-    fmt.Println(peer)
-    // {martin {51.33962 12.37129}}
-}
-```
+[embedmd]:# (../x/structinit/main.go)
 
 Struct types support embedding (allows for reuse and composition) and tags (a
 weakly typed, but lightweight approach to annotations).
 
 Example ([play](https://play.golang.org/p/KgKB3jqCapV)):
 
-```golang
-package main
-
-import (
-    "encoding/json"
-    "fmt"
-)
-
-type Location struct {
-    Lat  float64 `json:"lat"`
-    Long float64 `json:"long"`
-}
-
-type Peer struct {
-    Name     string   `json:"name"`
-    Location Location `json:"loc"`
-}
-
-func main() {
-    peer := Peer{
-        Name: "martin",
-        Location: Location{
-            Lat:  51.33962,
-            Long: 12.37129,
-        }}
-    b, _ := json.Marshal(peer)
-    fmt.Println(string(b))
-    // {"name":"martin","loc":{"lat":51.33962,"long":12.37129}}
-}
-```
+[embedmd]:# (../x/structembed/main.go)
 
 ### Maps
 
@@ -196,26 +123,4 @@ func main() {
 
 Example ([play](https://play.golang.org/p/kMy733hPcFT)):
 
-```golang
-package main
-
-import (
-    "fmt"
-)
-
-func main() {
-    stats := map[string]int{
-        "ok":     120,
-        "failed": 2,
-    }
-    fmt.Println(stats)       // --> map[failed:2 ok:120]
-    stats["ok"]++            // modify entry
-    stats["new"] = 1         // add entry
-    fmt.Println(stats)       // --> map[failed:2 new:1 ok:121]
-    delete(stats, "new")     // delete an entry
-    fmt.Println(stats)       // --> map[failed:2 ok:121]
-    fmt.Println(stats["ok"]) // --> 121
-}
-```
-
-
+[embedmd]:# (../x/mapinit/main.go)
