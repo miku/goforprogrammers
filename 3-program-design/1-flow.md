@@ -146,6 +146,8 @@ called structural. (Pierce, 2002)
 Nominal typing has advantages, which is why "[...] nominal type systems are the
 norm in mainstream programming languages."
 
+A typical question: How do I make sure I do not accidentally implement an interface?
+
 [embedmd]:# (../x/readerimpl/main.go)
 ```go
 package main
@@ -158,3 +160,19 @@ func (f *Foo) Read(p []byte) (int, error) {
 	return len(p), nil
 }
 ```
+
+Interestingly, it is almost no problem. Go favors small interfaces and reuse of
+existing interfaces.
+
+While in the above example the `Read` method matches the `Read` method from the
+`io.Reader` interface - hence it implements `io.Reader` it is semantically off.
+Where does this matter?
+
+## Design Flow
+
+* implement your program first
+* if interface emerge, great - factor them out
+
+This is a bottom-up approach, as opposed to the interface-first approach (which
+often ends up with one or at most two implementations, anyway). 
+
