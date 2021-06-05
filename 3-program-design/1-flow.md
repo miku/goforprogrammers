@@ -1,5 +1,7 @@
 # Design Flow
 
+## Object-oriented, but different
+
 Go is object-oriented, but takes a different approach.
 
 * no type hierarchy (and much less emphasis on inheritance, which does not really exist)
@@ -129,5 +131,30 @@ type File struct {
 func main() {
 	f := File{}
 	f.Lock()
+}
+```
+
+## Interfaces
+
+Go uses structural typing.
+
+> Type systems like Java’s, in which names are significant and subtyping is
+explicitly declared, are called nominal. Type systems [...] in which names are
+inessential and subtyping is defined directly on the structures of types are
+called structural. (Pierce, 2002)
+
+Nominal typing has advantages, which is why "[...] nominal type systems are the
+norm in mainstream programming languages."
+
+[embedmd]:# (../x/readerimpl/main.go)
+```go
+package main
+
+func main() {}
+
+type Foo struct{}
+
+func (f *Foo) Read(p []byte) (int, error) {
+	return len(p), nil
 }
 ```
