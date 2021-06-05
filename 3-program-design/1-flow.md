@@ -56,3 +56,4 @@ Possible problems with classic approach:
 > object-oriented language showed me a code center-piece: An interface with a
 > good dozen methods (including data and more UI related names). It seemed more
 > like a *bundle* than an real *abstraction*.
+
