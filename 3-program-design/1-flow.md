@@ -90,3 +90,44 @@ Possible problems with classic approach:
 > good dozen methods (including data and more UI related names). It seemed more
 > like a *bundle* than an real *abstraction*.
 
+
+## Inheritance and embedding
+
+> Go does not provide the typical, type-driven notion of subclassing, but it
+> does have the ability to “borrow” pieces of an implementation by embedding
+> types within a struct or interface.
+
+Used with interfaces:
+
+[embedmd]:# (../x/iointerfaces/main.go /type Reader/ $)
+```go
+type Reader interface {
+	Read(p []byte) (n int, err error)
+}
+
+type Writer interface {
+	Write(p []byte) (n int, err error)
+}
+```
+
+Typical example: embedding a lock.
+
+[embedmd]:# (../x/embedlock/main.go)
+```go
+package main
+
+import (
+	"io"
+	"sync"
+)
+
+type File struct {
+	sync.Mutex
+	rw io.ReadWriter
+}
+
+func main() {
+	f := File{}
+	f.Lock()
+}
+```
