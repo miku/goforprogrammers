@@ -40,3 +40,19 @@ func main() {
 	fmt.Printf("%v %v\n", y, y.isEven())
 }
 ```
+
+A struct is flatter than a class. It's data first.
+
+[embedmd]:# (../x/rgba/main.go)
+
+Favors composition over inheritance. Easy to comprehend, harder to realize.
+
+Possible problems with classic approach:
+
+* too many levels of indirection
+* premature abstractions
+
+> Anecdote: On a short tour through some code, someone using a classic
+> object-oriented language showed me a code center-piece: An interface with a
+> good dozen methods (including data and more UI related names). It seemed more
+> like a *bundle* than an real *abstraction*.
