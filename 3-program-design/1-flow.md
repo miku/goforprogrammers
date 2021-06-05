@@ -174,5 +174,7 @@ Where does this matter?
 * if interface emerge, great - factor them out
 
 This is a bottom-up approach, as opposed to the interface-first approach (which
-often ends up with one or at most two implementations, anyway). 
+often ends up with one or at most two implementations, anyway).
 
+
+> The bigger the interface, the weaker the abstraction. -- [Go Proverbs](https://youtu.be/PAAkCSZUG1c?t=317)
