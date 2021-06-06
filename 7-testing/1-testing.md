@@ -54,10 +54,8 @@ zfuncversion.go
 
 Any function in test files following a naming convention will get picked up:
 
-[embedmd]:# (../x/testabs/main.go)
+[embedmd]:# (../x/testabs/main.go /import/ $)
 ```go
-package testabs
-
 import "testing"
 
 func TestAbs(t *testing.T) {
@@ -68,3 +66,51 @@ func TestAbs(t *testing.T) {
 }
 ```
 
+The `testing.T` type helps running the test, e.g. logging, skipping, temporary
+directories, etc.
+
+## Table-Driven Tests
+
+A simple pattern:
+
+* [https://github.com/golang/go/wiki/TableDrivenTests](https://github.com/golang/go/wiki/TableDrivenTests)
+
+> Writing good tests is not trivial, but in many situations a lot of ground can
+> be covered with table-driven tests: Each table entry is a complete test case
+> with inputs and expected results, and sometimes with additional information
+> such as a test name to make the test output easily readable.
+
+[embedmd]:# (../x/tabledriven/main.go /^import/ $)
+```go
+import "testing"
+
+var flagtests = []struct {
+	in  string
+	out string
+}{
+	{"%a", "[%a]"},
+	{"%-a", "[%-a]"},
+	{"%+a", "[%+a]"},
+	{"%#a", "[%#a]"},
+	{"% a", "[% a]"},
+	{"%0a", "[%0a]"},
+	{"%1.2a", "[%1.2a]"},
+	{"%-1.2a", "[%-1.2a]"},
+	{"%+1.2a", "[%+1.2a]"},
+	{"%-+1.2a", "[%+-1.2a]"},
+	{"%-+1.2abc", "[%+-1.2a]bc"},
+	{"%-1.2abc", "[%-1.2a]bc"},
+}
+
+func TestFlagParser(t *testing.T) {
+	var flagprinter flagPrinter
+	for _, tt := range flagtests {
+		t.Run(tt.in, func(t *testing.T) {
+			s := Sprintf(tt.in, &flagprinter)
+			if s != tt.out {
+				t.Errorf("got %q, want %q", s, tt.out)
+			}
+		})
+	}
+}
+```
