@@ -1,6 +1,6 @@
 # Intro
 
-> Go is an open source programming language that makes it easy to build simple,
+> Go is an [open source](https://golang.org/LICENSE) programming language that makes it easy to build simple,
 > reliable, and efficient software. --
 > [https://golang.org/](https://golang.org/)
 
@@ -35,293 +35,567 @@ func main() {
 * Go is a compiled, strongly typed, garbage-collected language. An executable
   lives in a package main and contains a function main as entry point.
 
-## Variables
+## Where does Go code live?
 
-* There are four notations to
-  [declare](https://golang.org/ref/spec#Variable_declarations) and initialize
-variables.
+All Go code is organized in packages.
 
-You'll mostly the following two (type inference):
+> Go code is organized into packages. Within a package, code can refer to any
+> identifier (name) defined within, while clients of the package may only
+> reference the package's exported types, functions, constants, and variables
 
-[embedmd]:# (../x/vars/main.go /^.*a := 3.14/ /var b = 1.0.*/)
-```go
-	a := 3.14        // assign and infer type (only within functions)
-	var b = 1.0      // assign and infer type (anywhere)
+## What is a package?
+
+> A package in Go is simply a directory/folder with one or more .go files inside
+> of it. -- [https://rakyll.org/style-packages/](https://rakyll.org/style-packages/)
+
+At import time, Go first look for packages in `$GOROOT/src`, which contains the standard library:
+
 ```
+$ tree -d -I vendor /usr/local/go/src/ | pbcopy
+/usr/local/go/src/
+├── archive
+│   ├── tar
+│   │   └── testdata
+│   └── zip
+│       └── testdata
+├── bufio
+├── builtin
+├── bytes
+├── cmd
+│   ├── addr2line
+│   ├── api
+│   │   └── testdata
+│   │       └── src
+│   │           ├── issue21181
+│   │           │   ├── dep
+│   │           │   ├── indirect
+│   │           │   └── p
+│   │           ├── issue29837
+│   │           │   └── p
+│   │           └── pkg
+│   │               ├── p1
+│   │               ├── p2
+│   │               └── p3
+│   ├── asm
+│   │   └── internal
+│   │       ├── arch
+│   │       ├── asm
+│   │       │   └── testdata
+│   │       │       └── avx512enc
+│   │       ├── flags
+│   │       └── lex
+│   ├── buildid
+│   ├── cgo
+│   ├── compile
+│   │   └── internal
+│   │       ├── amd64
+│   │       ├── arm
+│   │       ├── arm64
+│   │       ├── gc
+│   │       │   ├── builtin
+│   │       │   └── testdata
+│   │       │       ├── gen
+│   │       │       └── reproducible
+│   │       ├── logopt
+│   │       ├── mips
+│   │       ├── mips64
+│   │       ├── ppc64
+│   │       ├── riscv64
+│   │       ├── s390x
+│   │       ├── ssa
+│   │       │   ├── gen
+│   │       │   └── testdata
+│   │       ├── syntax
+│   │       │   └── testdata
+│   │       ├── test
+│   │       ├── types
+│   │       ├── wasm
+│   │       └── x86
+│   ├── cover
+│   │   └── testdata
+│   │       └── html
+│   ├── dist
+│   ├── doc
+│   │   └── testdata
+│   │       ├── merge
+│   │       └── nested
+│   │           ├── empty
+│   │           └── nested
+│   ├── fix
+│   ├── go
+│   │   ├── internal
+│   │   │   ├── auth
+│   │   │   ├── base
+│   │   │   ├── bug
+│   │   │   ├── cache
+│   │   │   ├── cfg
+│   │   │   ├── clean
+│   │   │   ├── cmdflag
+│   │   │   ├── doc
+│   │   │   ├── envcmd
+│   │   │   ├── fix
+│   │   │   ├── fmtcmd
+│   │   │   ├── fsys
+│   │   │   ├── generate
+│   │   │   ├── get
+│   │   │   ├── help
+│   │   │   ├── imports
+│   │   │   │   └── testdata
+│   │   │   │       ├── android
+│   │   │   │       ├── illumos
+│   │   │   │       └── star
+│   │   │   ├── list
+│   │   │   ├── load
+│   │   │   ├── lockedfile
+│   │   │   │   └── internal
+│   │   │   │       └── filelock
+│   │   │   ├── modcmd
+│   │   │   ├── modconv
+│   │   │   │   └── testdata
+│   │   │   ├── modfetch
+│   │   │   │   ├── codehost
+│   │   │   │   └── zip_sum_test
+│   │   │   │       └── testdata
+│   │   │   ├── modget
+│   │   │   ├── modinfo
+│   │   │   ├── modload
+│   │   │   ├── mvs
+│   │   │   ├── par
+│   │   │   ├── renameio
+│   │   │   ├── robustio
+│   │   │   ├── run
+│   │   │   ├── search
+│   │   │   ├── str
+│   │   │   ├── test
+│   │   │   ├── tool
+│   │   │   ├── trace
+│   │   │   ├── txtar
+│   │   │   ├── vcs
+│   │   │   ├── version
+│   │   │   ├── vet
+│   │   │   ├── web
+│   │   │   └── work
+│   │   └── testdata
+│   │       ├── failssh
+│   │       ├── mod
+│   │       ├── modlegacy
+│   │       │   └── src
+│   │       │       ├── new
+│   │       │       │   ├── p1
+│   │       │       │   ├── p2
+│   │       │       │   └── sub
+│   │       │       │       ├── inner
+│   │       │       │       │   └── x
+│   │       │       │       └── x
+│   │       │       │           └── v1
+│   │       │       │               └── y
+│   │       │       └── old
+│   │       │           ├── p1
+│   │       │           └── p2
+│   │       ├── script
+│   │       └── testterminal18153
+│   ├── gofmt
+│   │   └── testdata
+│   ├── internal
+│   │   ├── archive
+│   │   │   └── testdata
+│   │   │       └── mycgo
+│   │   ├── bio
+│   │   ├── browser
+│   │   ├── buildid
+│   │   │   └── testdata
+│   │   ├── codesign
+│   │   ├── diff
+│   │   ├── dwarf
+│   │   ├── edit
+│   │   ├── gcprog
+│   │   ├── goobj
+│   │   ├── moddeps
+│   │   ├── obj
+│   │   │   ├── arm
+│   │   │   ├── arm64
+│   │   │   ├── mips
+│   │   │   ├── ppc64
+│   │   │   ├── riscv
+│   │   │   │   └── testdata
+│   │   │   │       └── testbranch
+│   │   │   ├── s390x
+│   │   │   ├── wasm
+│   │   │   └── x86
+│   │   ├── objabi
+│   │   ├── objfile
+│   │   ├── pkgpath
+│   │   ├── src
+│   │   ├── sys
+│   │   ├── test2json
+│   │   │   └── testdata
+│   │   └── traceviewer
+│   ├── link
+│   │   ├── internal
+│   │   │   ├── amd64
+│   │   │   ├── arm
+│   │   │   ├── arm64
+│   │   │   ├── benchmark
+│   │   │   ├── ld
+│   │   │   │   └── testdata
+│   │   │   │       ├── deadcode
+│   │   │   │       ├── httptest
+│   │   │   │       │   └── main
+│   │   │   │       ├── issue10978
+│   │   │   │       ├── issue25459
+│   │   │   │       │   ├── a
+│   │   │   │       │   └── main
+│   │   │   │       ├── issue26237
+│   │   │   │       │   ├── b.dir
+│   │   │   │       │   └── main
+│   │   │   │       ├── issue32233
+│   │   │   │       │   ├── lib
+│   │   │   │       │   └── main
+│   │   │   │       ├── issue38192
+│   │   │   │       ├── issue39256
+│   │   │   │       └── issue39757
+│   │   │   ├── loadelf
+│   │   │   ├── loader
+│   │   │   ├── loadmacho
+│   │   │   ├── loadpe
+│   │   │   ├── loadxcoff
+│   │   │   ├── mips
+│   │   │   ├── mips64
+│   │   │   ├── ppc64
+│   │   │   ├── riscv64
+│   │   │   ├── s390x
+│   │   │   ├── sym
+│   │   │   ├── wasm
+│   │   │   └── x86
+│   │   └── testdata
+│   │       ├── testBuildFortvOS
+│   │       ├── testHashedSyms
+│   │       ├── testIndexMismatch
+│   │       ├── testPErsrc
+│   │       ├── testPErsrc-complex
+│   │       └── testRO
+│   ├── nm
+│   ├── objdump
+│   │   └── testdata
+│   │       └── testfilenum
+│   ├── pack
+│   ├── pprof
+│   ├── test2json
+│   ├── trace
+│   └── vet
+│       └── testdata
+│           ├── asm
+│           ├── assign
+│           ├── atomic
+│           ├── bool
+│           ├── buildtag
+│           ├── cgo
+│           ├── composite
+│           ├── copylock
+│           ├── deadcode
+│           ├── httpresponse
+│           ├── lostcancel
+│           ├── method
+│           ├── nilfunc
+│           ├── print
+│           ├── rangeloop
+│           ├── shift
+│           ├── structtag
+│           ├── tagtest
+│           ├── testingpkg
+│           ├── unmarshal
+│           ├── unsafeptr
+│           └── unused
+├── compress
+│   ├── bzip2
+│   │   └── testdata
+│   ├── flate
+│   │   └── testdata
+│   ├── gzip
+│   │   └── testdata
+│   ├── lzw
+│   ├── testdata
+│   └── zlib
+├── container
+│   ├── heap
+│   ├── list
+│   └── ring
+├── context
+├── crypto
+│   ├── aes
+│   ├── cipher
+│   ├── des
+│   ├── dsa
+│   ├── ecdsa
+│   │   └── testdata
+│   ├── ed25519
+│   │   ├── internal
+│   │   │   └── edwards25519
+│   │   └── testdata
+│   ├── elliptic
+│   ├── hmac
+│   ├── internal
+│   │   ├── randutil
+│   │   └── subtle
+│   ├── md5
+│   ├── rand
+│   ├── rc4
+│   ├── rsa
+│   │   └── testdata
+│   ├── sha1
+│   ├── sha256
+│   ├── sha512
+│   ├── subtle
+│   ├── tls
+│   │   └── testdata
+│   └── x509
+│       ├── internal
+│       │   └── macos
+│       ├── pkix
+│       └── testdata
+├── database
+│   └── sql
+│       └── driver
+├── debug
+│   ├── dwarf
+│   │   └── testdata
+│   ├── elf
+│   │   └── testdata
+│   ├── gosym
+│   │   └── testdata
+│   ├── macho
+│   │   └── testdata
+│   ├── pe
+│   │   └── testdata
+│   └── plan9obj
+│       └── testdata
+├── embed
+│   └── internal
+│       └── embedtest
+│           └── testdata
+│               ├── _hidden
+│               └── i
+│                   └── j
+│                       └── k
+├── encoding
+│   ├── ascii85
+│   ├── asn1
+│   ├── base32
+│   ├── base64
+│   ├── binary
+│   ├── csv
+│   ├── gob
+│   ├── hex
+│   ├── json
+│   │   └── testdata
+│   ├── pem
+│   └── xml
+├── errors
+├── expvar
+├── flag
+├── fmt
+├── go
+│   ├── ast
+│   ├── build
+│   │   ├── constraint
+│   │   └── testdata
+│   │       ├── cgo_disabled
+│   │       ├── doc
+│   │       ├── empty
+│   │       ├── multi
+│   │       ├── other
+│   │       │   └── file
+│   │       └── withvendor
+│   │           └── src
+│   │               └── a
+│   │                   └── b
+│   ├── constant
+│   ├── doc
+│   │   └── testdata
+│   ├── format
+│   ├── importer
+│   ├── internal
+│   │   ├── gccgoimporter
+│   │   │   └── testdata
+│   │   ├── gcimporter
+│   │   │   └── testdata
+│   │   │       └── versions
+│   │   └── srcimporter
+│   │       └── testdata
+│   │           ├── issue20855
+│   │           ├── issue23092
+│   │           └── issue24392
+│   ├── parser
+│   │   └── testdata
+│   │       └── issue42951
+│   │           └── not_a_file.go
+│   ├── printer
+│   │   └── testdata
+│   ├── scanner
+│   ├── token
+│   └── types
+│       ├── fixedbugs
+│       └── testdata
+├── hash
+│   ├── adler32
+│   ├── crc32
+│   ├── crc64
+│   ├── fnv
+│   └── maphash
+├── html
+│   └── template
+│       └── testdata
+├── image
+│   ├── color
+│   │   └── palette
+│   ├── draw
+│   ├── gif
+│   ├── internal
+│   │   └── imageutil
+│   ├── jpeg
+│   ├── png
+│   │   └── testdata
+│   │       └── pngsuite
+│   └── testdata
+├── index
+│   └── suffixarray
+├── internal
+│   ├── bytealg
+│   ├── cfg
+│   ├── cpu
+│   ├── execabs
+│   ├── fmtsort
+│   ├── goroot
+│   ├── goversion
+│   ├── lazyregexp
+│   ├── lazytemplate
+│   ├── nettrace
+│   ├── obscuretestdata
+│   ├── oserror
+│   ├── poll
+│   ├── profile
+│   ├── race
+│   ├── reflectlite
+│   ├── singleflight
+│   ├── syscall
+│   │   ├── execenv
+│   │   ├── unix
+│   │   └── windows
+│   │       ├── registry
+│   │       └── sysdll
+│   ├── sysinfo
+│   ├── testenv
+│   ├── testlog
+│   ├── trace
+│   │   └── testdata
+│   ├── unsafeheader
+│   └── xcoff
+│       └── testdata
+├── io
+│   ├── fs
+│   └── ioutil
+│       └── testdata
+├── log
+│   └── syslog
+├── math
+│   ├── big
+│   ├── bits
+│   ├── cmplx
+│   └── rand
+├── mime
+│   ├── multipart
+│   │   └── testdata
+│   ├── quotedprintable
+│   └── testdata
+├── net
+│   ├── http
+│   │   ├── cgi
+│   │   │   └── testdata
+│   │   ├── cookiejar
+│   │   ├── fcgi
+│   │   ├── httptest
+│   │   ├── httptrace
+│   │   ├── httputil
+│   │   ├── internal
+│   │   ├── pprof
+│   │   └── testdata
+│   ├── internal
+│   │   └── socktest
+│   ├── mail
+│   ├── rpc
+│   │   └── jsonrpc
+│   ├── smtp
+│   ├── testdata
+│   ├── textproto
+│   └── url
+├── os
+│   ├── exec
+│   ├── signal
+│   │   └── internal
+│   │       └── pty
+│   ├── testdata
+│   │   ├── dirfs
+│   │   │   └── dir
+│   │   └── issue37161
+│   └── user
+├── path
+│   └── filepath
+├── plugin
+├── reflect
+├── regexp
+│   ├── syntax
+│   └── testdata
+├── runtime
+│   ├── cgo
+│   ├── debug
+│   ├── internal
+│   │   ├── atomic
+│   │   ├── math
+│   │   └── sys
+│   ├── metrics
+│   ├── msan
+│   ├── pprof
+│   │   └── testdata
+│   │       └── mappingtest
+│   ├── race
+│   │   └── testdata
+│   ├── testdata
+│   │   ├── testfaketime
+│   │   ├── testprog
+│   │   ├── testprogcgo
+│   │   │   └── windows
+│   │   ├── testprognet
+│   │   ├── testwinlib
+│   │   ├── testwinlibsignal
+│   │   └── testwinsignal
+│   └── trace
+├── sort
+├── strconv
+│   └── testdata
+├── strings
+├── sync
+│   └── atomic
+├── syscall
+│   └── js
+├── testdata
+├── testing
+│   ├── fstest
+│   ├── internal
+│   │   └── testdeps
+│   ├── iotest
+│   └── quick
+├── text
+│   ├── scanner
+│   ├── tabwriter
+│   └── template
+│       ├── parse
+│       └── testdata
+├── time
+│   └── tzdata
+├── unicode
+│   ├── utf16
+│   └── utf8
+└── unsafe
 
-You can name the type explicitly. The type follows the identifier (as
-opposed to C, Java, ...):
-
-[embedmd]:# (../x/vars/main.go /^.*c int/ /var d int8 =.*/)
-```go
-	var c int        // explicit type, without assignment
-	var d int8 = 127 // explicit type, with assignment
+543 directories
 ```
-
-* The default integer type will by [int](https://play.golang.org/p/z1emUwkp1rL).
-* Every type has a [zero value](https://golang.org/ref/spec#The_zero_value)
-
-> **When storage is allocated for a variable**, either through a declaration or
-> a call of new, or when a new value is created, either through a composite
-> literal or a call of make, **and no explicit initialization is provided, the
-> variable or value is given a default value**. Each element of such a variable
-> or value is set to the **zero value for its type**: false for booleans, 0 for
-> numeric types, "" for strings, and nil for pointers, functions, interfaces,
-> slices, channels, and maps. This initialization is done recursively, so for
-> instance each element of an array of structs will have its fields zeroed if
-> no value is specified.
-
-
-## Types
-
-### Primitive Types
-
-* boolean, called `bool`, predeclared constants `true` and `false`
-* [https://golang.org/ref/spec#Numeric_types](https://golang.org/ref/spec#Numeric_types)
-
-
-[embedmd]:# (https://golang.org/ref/spec go /^uint8.*/ /^rune.*/)
-```go
-uint8       the set of all unsigned  8-bit integers (0 to 255)
-uint16      the set of all unsigned 16-bit integers (0 to 65535)
-uint32      the set of all unsigned 32-bit integers (0 to 4294967295)
-uint64      the set of all unsigned 64-bit integers (0 to 18446744073709551615)
-
-int8        the set of all signed  8-bit integers (-128 to 127)
-int16       the set of all signed 16-bit integers (-32768 to 32767)
-int32       the set of all signed 32-bit integers (-2147483648 to 2147483647)
-int64       the set of all signed 64-bit integers (-9223372036854775808 to 9223372036854775807)
-
-float32     the set of all IEEE-754 32-bit floating-point numbers
-float64     the set of all IEEE-754 64-bit floating-point numbers
-
-complex64   the set of all complex numbers with float32 real and imaginary parts
-complex128  the set of all complex numbers with float64 real and imaginary parts
-
-byte        alias for uint8
-rune        alias for int32
-```
-
-
-There are implementation specific predeclared types for `uint` (32 or 64 bits),
-`int` (same as `uint`), `uintptr` large enough to store pointer value.
-
-* [proposal: spec: remove complex numbers #19921](https://github.com/golang/go/issues/19921) (Apr 11, 2017)
-
-> Go supports complex numbers, but ~nobody uses them.
-
-* String type, `s := "Hello 世界"` - all Go source is UTF-8 encoded, double quotes or backticks for multiline strings; strings are *immutable*.
-
-Any UTF-8 character may be used as a variable name
-([play](https://play.golang.org/p/eU4VDR0-jpE)):
-
-[embedmd]:# (../x/hellojp/main.go)
-```go
-package main
-
-import (
-	"fmt"
-)
-
-func main() {
-	世界 := "hello world"
-	fmt.Println(世界)
-}
-```
-
-### Arrays and Slices
-
-There are [arrays](https://golang.org/ref/spec#Array_types) and
-[slices](https://golang.org/ref/spec#Slice_types) in Go. Arrays carry their
-length as part of the type, slices are dynamically sized arrays. You will
-mostly encounter slices.
-
-Example (on [play](https://play.golang.org/p/bsgboAZ82jH)):
-
-[embedmd]:# (../x/slicehello/main.go)
-```go
-package main
-
-import (
-	"fmt"
-)
-
-func main() {
-	data := []int{1, 2, 3, 4, 5}
-	fmt.Printf("%v has length %d", data, len(data))
-}
-```
-
-#### Creating a slice
-
-[embedmd]:# (../x/sliceinit/main.go)
-```go
-package main
-
-func main() {
-	var a []string
-	b := []string{}
-	c := []string{"a", "b", "c"}
-}
-```
-
-#### The append builtin function
-
-* [Go Tour: Appending to slice](https://tour.golang.org/moretypes/15), it is a
-  [built-in](https://golang.org/pkg/builtin/#append) function
-
-[embedmd]:# (../x/sliceappend/main.go)
-```go
-package main
-
-func main() {
-	var a []string
-	a = append(a, "x")
-	a = append(a, "y")
-
-	b := []string{"X", "Y"}
-	a = append(a, b...)
-}
-```
-
-#### Custom slice indices
-
-Very rare, but possible: custom indices for slice elements on literal initializion:
-
-[embedmd]:# (../x/sliceindex/main.go)
-```go
-package main
-
-import "log"
-
-func main() {
-
-	// zero indexed, by default
-	zMonths := []string{"jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"}
-	log.Println(len(zMonths), zMonths)
-	log.Println(zMonths[0])
-
-	// custom indices possible
-	months := []string{
-		3:  "mar",
-		1:  "jan",
-		2:  "feb",
-		4:  "apr",
-		5:  "may",
-		6:  "jun",
-		7:  "jul",
-		8:  "aug",
-		9:  "sep",
-		10: "oct",
-		11: "nov",
-		12: "dec",
-	}
-	log.Println(len(months), months)
-	log.Println(months[1])
-	log.Println(months[0]) // does not panic, just returns the empty string
-
-	// log.Println(months[13]) // panic: runtime error: index out of range [13] with length 13
-
-}
-```
-
-### Maps
-
-* Map types are the way to implement hash maps or associative arrays.
-
-Example ([play](https://play.golang.org/p/kMy733hPcFT)):
-
-[embedmd]:# (../x/mapinit/main.go)
-```go
-package main
-
-import (
-	"fmt"
-)
-
-func main() {
-	stats := map[string]int{
-		"ok":     120,
-		"failed": 2,
-	}
-	fmt.Println(stats)       // --> map[failed:2 ok:120]
-	stats["ok"]++            // modify entry
-	stats["new"] = 1         // add entry
-	fmt.Println(stats)       // --> map[failed:2 new:1 ok:121]
-	delete(stats, "new")     // delete an entry
-	fmt.Println(stats)       // --> map[failed:2 ok:121]
-	fmt.Println(stats["ok"]) // --> 121
-}
-```
-
-### Structs
-
-* Struct types group zero or more fields (name, type) into a type.
-
-Example ([play](https://play.golang.org/p/RYOrTC-CqPu)):
-
-[embedmd]:# (../x/structinit/main.go)
-```go
-package main
-
-import "fmt"
-
-type Location struct {
-	Lat  float64
-	Long float64
-}
-
-type Peer struct {
-	Name     string
-	Location Location
-}
-
-func main() {
-	peer := Peer{
-		Name: "martin",
-		Location: Location{
-			Lat:  51.33962,
-			Long: 12.37129,
-		}}
-	fmt.Println(peer)
-	// {martin {51.33962 12.37129}}
-}
-```
-
-Struct types support embedding (allows for reuse and composition) and tags (a
-weakly typed, but lightweight approach to annotations).
-
-Example ([play](https://play.golang.org/p/KgKB3jqCapV)):
-
-[embedmd]:# (../x/structembed/main.go)
-```go
-package main
-
-import (
-	"encoding/json"
-	"fmt"
-)
-
-type Location struct {
-	Lat  float64 `json:"lat"`
-	Long float64 `json:"long"`
-}
-
-type Peer struct {
-	Name     string   `json:"name"`
-	Location Location `json:"loc"`
-}
-
-func main() {
-	peer := Peer{
-		Name: "martin",
-		Location: Location{
-			Lat:  51.33962,
-			Long: 12.37129,
-		}}
-	b, _ := json.Marshal(peer)
-	fmt.Println(string(b))
-	// {"name":"martin","loc":{"lat":51.33962,"long":12.37129}}
-}
-```
-
