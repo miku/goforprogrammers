@@ -2,6 +2,36 @@
 
 ## The go test subcommand
 
+Go has testing support in the [standard
+library](https://golang.org/pkg/testing/) and in the [go
+tool](https://golang.org/cmd/go/#hdr-Test_packages).
+
+```
+usage: go test [build/test flags] [packages] [build/test flags & test binary flags]
+```
+
+Example: Testing in *local directory mode*
+
+```
+$ go test
+```
+
+Be verbose:
+
+```
+$ go test -v
+```
+
+Example: Package list mode, e.g. package name or patterns like `.` or `./...`.
+
+```
+$ go test math
+$ go test .
+$ go test ./...
+```
+
+## File naming conventions
+
 Typical naming pattern, e.g. `..._test.go` for tests and benchmarks and `example_...` for examples.
 
 Example from [sort](https://github.com/go4org/go4/tree/master/sort):
@@ -21,3 +51,4 @@ sort.go
 sort_test.go
 zfuncversion.go
 ```
+
