@@ -8,6 +8,22 @@
 
 * [ref/spec](https://golang.org/ref/spec)
 
+## Development
+
+* [golang/go](https://github.com/golang/go/)
+* [Proposals](https://github.com/golang/proposal), language evolution
+
+
+## Compatibility Statement
+
+* [Go 1 and the Future of Go Programs](https://golang.org/doc/go1compat) (2012 or earlier)
+
+> It is intended that programs written to the Go 1 specification will continue
+> to compile and run correctly, unchanged, over the lifetime of that
+> specification.
+
+Some exceptions, e.g. OS specific code, like [syscall](https://golang.org/pkg/syscall/).
+
 ## Other Resources
 
 ![](https://raw.githubusercontent.com/miku/goforprogrammers/master/static/go_21_s.jpg)
