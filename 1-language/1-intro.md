@@ -48,7 +48,47 @@ All Go code is organized in packages.
 > A package in Go is simply a directory/folder with one or more .go files inside
 > of it. -- [https://rakyll.org/style-packages/](https://rakyll.org/style-packages/)
 
-At import time, Go first look for packages in `$GOROOT/src`, which contains the standard library:
+
+## Import resolution
+
+At import time, Go first look for packages in `$GOROOT/src`, which contains the
+standard library (see Extra: Stdlib packages).
+
+Depending on the project setup, e.g. GOPATH (early) or module-aware (current)
+code will be searched in GOPATH or the module cache.
+
+## Getting Go packages
+
+There is no extra package manager - the go tool is used to install packages:
+
+```
+$ go get golang.org/x/tools/cmd/goimports
+```
+
+> [Go] get resolves its command-line arguments to packages at specific module
+versions, updates go.mod to require those versions, downloads source code into
+the module cache, then builds and installs the named packages.
+
+You see `go get` a lot in READMEs. Caveat: as of 1.17 [Using go get for
+installing executables
+deprecated](https://golang.org/doc/go-get-install-deprecation).
+
+These frictions come from mixed use cases with `go get` to fetch and build code
+- and with the introduction of go modules, to also change the `go.mod` file
+describing dependencies.
+
+Go modules are the preferred way to start applications and libraries today.
+
+To install executables on your system, run `go install` instead:
+
+* without version suffix, if works on module level
+* with version suffix (e.g. "@latest") is ignores modules
+
+```
+$ go install golang.org/x/tools/cmd/goimports@latest
+```
+
+## Extra: Stdlib packages
 
 ```
 $ tree -d -I 'vendor|testdata|internal' /usr/local/go/src/
