@@ -114,3 +114,24 @@ func TestFlagParser(t *testing.T) {
 	}
 }
 ```
+
+## Runtime race conditions
+
+The `go test` tool currently includes two flags for detecting race conditions and memory errors:
+
+```
+$ go test -race
+```
+
+For memory sanitizer you'll need LLVM (3.8, with `-fsanitize` flag):
+
+```
+CC=clang CXX=clang++ go test -msan
+```
+
+> The compiler, linker, and go command have a new flag -msan, analogous to
+> -race and only available on linux/amd64, that enables interoperation with the
+> Clang MemorySanitizer. Such interoperation is useful mainly for testing a
+> program containing suspect C or C++ code. -- [https://golang.org/doc/go1.6](https://golang.org/doc/go1.6)
+
+
