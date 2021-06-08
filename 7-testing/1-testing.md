@@ -123,6 +123,11 @@ The `go test` tool currently includes two flags for detecting race conditions an
 $ go test -race
 ```
 
+There is a limit, as for how many goroutines can run simultaneously for the
+race detector.
+
+> race: limit on 8128 simultaneously alive goroutines is exceeded, dying
+
 For memory sanitizer you'll need LLVM (3.8, with `-fsanitize` flag):
 
 ```
