@@ -219,6 +219,8 @@ func main() {
 }
 ```
 
+* [runtime/map.go](https://github.com/golang/go/blob/2169deb35247a80794519589e7cd845c6ebf4e5a/src/runtime/map.go#L7-L54)
+
 ### Structs
 
 * Struct types group zero or more fields (name, type) into a type.

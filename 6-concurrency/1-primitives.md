@@ -18,7 +18,7 @@ Concurrent Programming Control" (Dijkstra, 1965) in Go:
 ## Goroutines
 
 * lightweight threads (without id and less external control)
-* M:N scheduler: the runtime distributes M goroutines onto N OS threads (see `GOMAXPROCS`
+* M:N scheduler ([docs](https://git.io/JZOmz)): the runtime distributes M goroutines onto N OS threads (see `GOMAXPROCS`
   environment variable, defaults to the value of `runtime.NumCPU`)
 
 > By default, Go programs run with GOMAXPROCS set to the number of cores
