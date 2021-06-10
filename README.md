@@ -2,7 +2,7 @@
 
 * [https://spartakiade.org/](https://spartakiade.org/)
 
-Date and location: 2021-06-11, 09-17 (09-12, 13-15, 15:15-17), remote workshop;
+Date and location: 2021-06-11, 09-16+ (09-12, 13-16+), remote workshop;
 language: de/en (depending on participants; slides and material will be in
 English)
 

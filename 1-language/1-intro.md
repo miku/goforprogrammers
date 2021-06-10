@@ -46,6 +46,13 @@ func main() {
 }
 ```
 
+Save code into a file, e.g. `main.go` - then:
+
+```
+$ go run main.go
+```
+
+
 ## Execution Model
 
 * Go is a compiled, strongly typed, garbage-collected language. An executable
