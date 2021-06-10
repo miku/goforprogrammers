@@ -418,6 +418,25 @@ func main() {
 }
 ```
 
+## Functions
+
+* first class objects
+
+## Interfaces
+
+* a new "interface type"
+* defines a method set
+* implicitly satisfied (structural typing)
+
+## Errors
+
+* no exceptions
+* errors are values
+
+> But remember: Whatever you do, always check your errors! -- [https://blog.golang.org/errors-are-values](https://blog.golang.org/errors-are-values)
+
+
+
 ## Workout
 
 * [Exercise: loops and functions](https://tour.golang.org/flowcontrol/8)
