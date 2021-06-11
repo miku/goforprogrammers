@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../golang6h"
+		},
+		{
+			"path": "../aboutgo"
+		},
+		{
+			"path": "../gospace"
+		},
+		{
+			"path": "../concgo"
+		}
+	],
+	"settings": {}
+}
