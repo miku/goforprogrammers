@@ -14,5 +14,15 @@
    goroutines are finished?
 
 2. Write a small "worker function" that uses a string channel as queue. Setup 3
-   workers. The put 10 elements on the queue channel.  
+   workers. The put 10 elements on the queue. Close the channel to signal the workers.
+   Extra task: use a waitgroup to wait until all goroutines are done.
 
+
+
+## Related Examples
+
+* [waitgroup](../x/waitgroup)
+* [waitgroupfetch](../x/waitgroupfetch)
+* [workerqueue](../x/workerqueue)
+* [pingpong](../x/pingpong)
+* [timeout](../x/timeout) (also: [package context](../9-misc/packages/context))
