@@ -7,7 +7,7 @@ all:
 
 fetch:
 	# https://stackoverflow.com/questions/52969195/docker-container-running-golang-http-client-getting-error-certificate-signed-by
-	CGO_ENABLED=$(CGO_ENABLED) go build -o $@ main.go
+	CGO_ENABLED=$(CGO_ENABLED) go build -ldflags="-w -s" -o $@ main.go
 
 .PHONY: clean
 clean:
@@ -28,5 +28,5 @@ imagecgo: fetch
 
 .PHONY: clean-dangling
 clean-dangling:
-	docker rmi $$(docker images -f dangling=true -q)
+	docker rmi -f $$(docker images -f dangling=true -q)
 
