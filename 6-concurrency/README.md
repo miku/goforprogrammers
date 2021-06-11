@@ -1,6 +1,6 @@
 # Concurrency
 
-* [Introduction](1-concurrency)
+* [Introduction](1-primitives.md)
 * Go Tour, [Concurrency](https://tour.golang.org/concurrency/1)
 * [CSP](csp)
 * [Goroutines](goroutines)
@@ -13,8 +13,6 @@
    e.g. 10 milliseconds. How can you make sure the program waits until all
    goroutines are finished?
 
-2. 
-
-3. Implement "Ping-Pong" with goroutines.
-
+2. Write a small "worker function" that uses a string channel as queue. Setup 3
+   workers. The put 10 elements on the queue channel.  
 
