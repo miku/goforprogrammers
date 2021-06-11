@@ -418,23 +418,44 @@ func main() {
 }
 ```
 
+* Recap with the Go Tour: [https://tour.golang.org/flowcontrol/1](https://tour.golang.org/flowcontrol/1), ff.
+
 ## Functions
 
+* multiple return values
 * first class objects
 
-## Interfaces
+See: 
+
+* [https://tour.golang.org/basics/4](https://tour.golang.org/basics/4)
+* [https://tour.golang.org/basics/5](https://tour.golang.org/basics/5)
+* [https://tour.golang.org/basics/6](https://tour.golang.org/basics/6)
+* [https://tour.golang.org/basics/7](https://tour.golang.org/basics/7)
+
+
+## Methods and Interfaces
 
 * a new "interface type"
 * defines a method set
 * implicitly satisfied (structural typing)
+
+See:
+
+* [https://tour.golang.org/methods/1](https://tour.golang.org/methods/1), and on
+
 
 ## Errors
 
 * no exceptions
 * errors are values
 
-> But remember: Whatever you do, always check your errors! -- [https://blog.golang.org/errors-are-values](https://blog.golang.org/errors-are-values)
+> But remember: Whatever you do, always check your errors! --
+> [https://blog.golang.org/errors-are-values](https://blog.golang.org/errors-are-values)
 
+
+## Extra: Go Tour More Types 
+
+* [https://tour.golang.org/moretypes/1](https://tour.golang.org/moretypes/1)
 
 
 ## Workout
