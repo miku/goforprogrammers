@@ -22,3 +22,6 @@ A couple of **non-rules**:
 ## Dependency Management
 
 * use go modules, via `go mod init`
+
+## Walkthrough of a simple package
+
