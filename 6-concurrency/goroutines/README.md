@@ -53,7 +53,7 @@ Index of the three part series:
 
 ### How the scheduler works.
 
-![Ardan Labs](scheduler.png?v=2)
+![Scheduler](scheduler.png?v=2)
 
 ## Links
 

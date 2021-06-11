@@ -139,4 +139,6 @@ CC=clang CXX=clang++ go test -msan
 > Clang MemorySanitizer. Such interoperation is useful mainly for testing a
 > program containing suspect C or C++ code. -- [https://golang.org/doc/go1.6](https://golang.org/doc/go1.6)
 
+## Example: Race Detection
 
+* [Solution of a Problem in Concurrent Programming Control](dijkstra) (1965)
