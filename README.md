@@ -1,10 +1,12 @@
-# WIP: Go for Programmers @ Spartakiade 2021
+# Go for Programmers @ Spartakiade 2021
 
 * [https://spartakiade.org/](https://spartakiade.org/)
 
 Date and location: 2021-06-11, 09-16+ (09-12, 13-16+), remote workshop;
 language: de/en (depending on participants; slides and material will be in
 English)
+
+Note: This material is work-in-progress.
 
 ## Abstract
 
